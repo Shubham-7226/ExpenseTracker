@@ -3,14 +3,8 @@ import React from 'react';
 import ExpenseItem from './ExpenseItem';
 
 function renderExpenseItem(itemData) {
-  console.log(itemData);
-  return (
-    <ExpenseItem
-      discription={itemData.item.discription}
-      amount={itemData.item.amount}
-      date={itemData.item.date}
-    />
-  );
+  // console.log(itemData);
+  return <ExpenseItem {...itemData.item} />;
 }
 
 export default function ExpensesList({expenses}) {
@@ -20,7 +14,7 @@ export default function ExpensesList({expenses}) {
         data={expenses}
         renderItem={renderExpenseItem}
         keyExtractor={item => {
-          item.id;
+          return item.id;
         }}
       />
     </View>

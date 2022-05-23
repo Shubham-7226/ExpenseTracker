@@ -3,14 +3,14 @@ import React from 'react';
 import {GlobalStyles} from '../../constants/styles';
 
 export default function ExpensesSummery({expenses, periodName}) {
-  const expensesSum = expenses.reduce((sum, expense) => {
+  const expensesSum = expenses?.reduce((sum, expense) => {
     return sum + expense.amount;
   }, 0);
 
   return (
     <View style={styles.container}>
       <Text style={styles.period}>{periodName}</Text>
-      <Text style={styles.sum}>${expensesSum.toFixed(2)}</Text>
+      <Text style={styles.sum}>${expensesSum?.toFixed(2)}</Text>
     </View>
   );
 }
@@ -24,10 +24,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  period: {fontSize: 12, Color: GlobalStyles.colors.primary400},
+  period: {fontSize: 12, color: GlobalStyles.colors.primary400},
   sum: {
     fontSize: 16,
     fontWeight: 'bold',
-    Color: GlobalStyles.colors.primary500,
+    color: GlobalStyles.colors.primary500,
   },
 });
