@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   expenseItem: {
     padding: 12,
     marginVertical: 8,
-    color: GlobalStyles.colors.primary500,
+    color: GlobalStyles.colors.primary00,
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderRadius: 6,
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   textBase: {
-    color: GlobalStyles.colors.primary50,
+    color: GlobalStyles.colors.primary500,
   },
   discription: {
     fonstsize: 16,

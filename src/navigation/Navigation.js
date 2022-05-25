@@ -16,11 +16,11 @@ function ExpenseOverview() {
   return (
     <Tab.Navigator
       screenOptions={({navigation}) => ({
-        headerStyle: {backgroundColor: GlobalStyles.colors.primary200},
+        headerStyle: {backgroundColor: GlobalStyles.colors.primary500},
         headerTintColor: 'white',
-        tabBarStyle: {backgroundColor: GlobalStyles.colors.primary200},
+        tabBarStyle: {backgroundColor: GlobalStyles.colors.primary500},
         tabBarActiveTintColor: {
-          backgroundColor: GlobalStyles.colors.gray500,
+          backgroundColor: GlobalStyles.colors.accent500,
         },
         headerRight: ({tintColor}) => (
           <IconButton
@@ -69,6 +69,7 @@ export default function Navigation() {
           screenOptions={{
             headerStyle: {backgroundColor: GlobalStyles.colors.primary500},
             headerTintColor: 'white',
+            contentStyle: {backgroundColor: GlobalStyles.colors.primary100},
           }}>
           <Stack.Screen
             name="ExpenseOverview"

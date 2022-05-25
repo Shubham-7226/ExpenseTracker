@@ -15,7 +15,11 @@ export default function RecentExpenses() {
   // console.log(recentExpenses);
   return (
     <View style={styles.container}>
-      <ExpensesOutput expenses={recentExpenses} expensesPeriod="last 7 days" />
+      <ExpensesOutput
+        expenses={recentExpenses}
+        expensesPeriod="last 7 days"
+        fallBackText="No expenses registered for 7 days."
+      />
     </View>
   );
 }
