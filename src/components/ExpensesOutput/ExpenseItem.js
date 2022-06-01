@@ -4,8 +4,8 @@ import {StyleSheet, View, Text, Pressable} from 'react-native';
 import {GlobalStyles} from '../../constants/styles';
 import {getFormattedDate} from '../../util/date';
 
-export default function ExpenseItem({id, discription, amount, date}) {
-  // console.log(discription);
+export default function ExpenseItem({id, description, amount, date}) {
+  // console.log(getFormattedDate(date));
 
   const navigation = useNavigation();
   const expensePressHandler = () => {
@@ -18,11 +18,11 @@ export default function ExpenseItem({id, discription, amount, date}) {
       style={({pressed}) => pressed && styles.pressed}>
       <View style={styles.expenseItem}>
         <View>
-          <Text style={styles.textBase}>{discription}</Text>
+          <Text style={styles.textBase}>{description}</Text>
           <Text style={styles.amount}>{getFormattedDate(date)}</Text>
         </View>
         <View style={styles.amountContainer}>
-          <Text style={styles.textBase}>{amount.toFixed(2)}</Text>
+          <Text style={styles.textBase}>{amount}</Text>
         </View>
       </View>
     </Pressable>
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   expenseItem: {
     padding: 12,
     marginVertical: 8,
-    color: GlobalStyles.colors.primary00,
+    backgroundColor: GlobalStyles.colors.primary200,
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderRadius: 6,
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   textBase: {
     color: GlobalStyles.colors.primary500,
   },
-  discription: {
+  description: {
     fonstsize: 16,
     marginBottom: 4,
     fontWeight: 'bold',

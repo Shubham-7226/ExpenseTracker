@@ -7,8 +7,12 @@ import {GlobalStyles} from '../../constants/styles';
 function ExpensesOutput({expenses, expensesPeriod, fallBackText}) {
   let Content = <Text style={styles.infoText}> {fallBackText}</Text>;
 
-  if (expenses.length > 0) {
-    Content = <ExpensesList expenses={expenses} />;
+  if (expenses?.length > 0) {
+    Content = (
+      <View style={{marginBottom: 50}}>
+        <ExpensesList expenses={expenses} />
+      </View>
+    );
   }
   return (
     <View style={styles.container}>

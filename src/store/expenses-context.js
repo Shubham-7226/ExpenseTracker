@@ -1,44 +1,7 @@
 import React from 'react';
 import {createContext, useReducer} from 'react';
 
-const DUMMY_EXPENSES = [
-  {
-    id: 'e1',
-    discription: 'A pair of shoes',
-    amount: 59.59,
-    date: new Date('2000-12-01'),
-  },
-  {
-    id: 'e2',
-    discription: 'pair of banana',
-    amount: 412,
-    date: new Date('2012-05-15'),
-  },
-  {
-    id: 'e3',
-    discription: 'pair of book',
-    amount: 53,
-    date: new Date('2019-09-06'),
-  },
-  {
-    id: 'e4',
-    discription: 'mouse of logitech',
-    amount: 600,
-    date: new Date('2001-03-04'),
-  },
-  {
-    id: 'e5',
-    discription: 'water bottle',
-    amount: 20,
-    date: new Date('2022-05-22'),
-  },
-  // {
-  //   id: 'e6',
-  //   discription: 'pair of book',
-  //   amount: 53,
-  //   date: new Date('2019-09-06'),
-  // },
-];
+const DUMMY_EXPENSES = [];
 
 export const ExpensesContext = createContext({
   expenses: [],
@@ -58,9 +21,16 @@ function expensesReducer(state, action) {
         expense => expense.id === action.payload.id,
       );
       const updatableExpense = state[updatableExpenseIndex];
-      const updatedItem = {...updatableExpense, ...action.payload.data};
+      // console.log(updatableExpense);
+
+      const data = {...updatableExpense, ...action.payload.data.expenseData};
+      // console.log(data);
+
       const updatedExpenses = [...state];
-      updatedExpenses[updatableExpenseIndex] = updatedItem;
+      // console.log(updatedExpenses);
+
+      updatedExpenses[updatableExpenseIndex] = data;
+      // console.log(updatedExpenses);
       return updatedExpenses;
 
     case 'DELETE':
@@ -74,11 +44,13 @@ function expensesReducer(state, action) {
 function ExpensesContextProvider({children}) {
   const [expensesState, dispatch] = useReducer(expensesReducer, DUMMY_EXPENSES);
 
-  function addExpense({expenseData}) {
+  function addExpense(expenseData) {
     dispatch({type: 'ADD', payload: expenseData});
   }
 
   const updateExpense = (id, expenseData) => {
+    console.log('in add expense' + id);
+
     dispatch({type: 'UPDATE', payload: {id: id, data: expenseData}});
   };
 
